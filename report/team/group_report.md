@@ -4,9 +4,9 @@ Báo cáo ngắn, tối đa 2 trang. Số liệu chi tiết nằm trong các fil
 
 ## 1. Thông tin nhóm
 
-- Tên nhóm: `abc123`
-- Lớp: `K5-L3A`
-- Thành viên: xem [TEAM.md](../../TEAM.md)
+- Tên nhóm:
+- Lớp:
+- Thành viên: xem `TEAM.md`
 
 ## 2. Mục tiêu và cách tiếp cận
 

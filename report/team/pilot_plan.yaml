@@ -47,11 +47,12 @@ pilot:
     predeclared: "Đã chốt trước ngày bắt đầu toàn bộ chỉ số chính, MDE 0,06, 3 luật dừng 4 vế, lộ trình rollout và ngày quyết định 2027-01-05"
   stop_rules:
     - "NẾU tỉ lệ mở lại trong 7 ngày của nhóm trợ lý cao hơn nhóm đối chứng từ 2 điểm phần trăm trở lên hoặc vượt trần tuyệt đối 6%, hoặc phát sinh từ 1 ca hoàn trùng hay báo đã hoàn khi sổ cái lỗi trở lên TRONG 3 ngày liên tiếp THÌ Giám đốc vận hành LogiX-VN kích hoạt cờ tắt trợ lý trong 30 phút và chuyển toàn bộ sang luồng nhân viên tự làm KHÔNG THÌ không được chuyển sang bước rollout tiếp theo"
-    - "NẾU chi phí mỗi việc thành công đo bằng thời gian thực tế vượt 8.000 đ hoặc tỉ lệ làm lại theo tuần vượt 7% TRONG 2 tuần liên tiếp THÌ PM trợ lý hoàn phí thu hẹp phạm vi về chỉ còn noi_dia, giữ giới hạn tối đa 2 lần chạy và rà 20 trace làm lại cùng Kỹ sư trưởng agent KHÔNG THÌ không được mở tiếp hang_nang hoặc nâng bước rollout"
+    - "NẾU chi phí mỗi việc thành công đo bằng thời gian thực tế vượt 8.000 đ hoặc tỉ lệ làm lại theo tuần vượt 7% TRONG 2 tuần liên tiếp THÌ PM trợ lý hoàn phí thu hẹp phạm vi về chỉ còn noi_dia, giữ giới hạn tối đa 2 lần chạy và rà 20 trace làm lại KHÔNG THÌ không được mở tiếp hang_nang hoặc nâng bước rollout"
     - "NẾU tỉ lệ bỏ qua gợi ý (sua + bo) vượt 40% hoặc tỉ lệ mở trợ lý ở nhóm can thiệp dưới 50% TRONG 1 tuần liên tiếp THÌ Trưởng nhóm CSKH phỏng vấn 5 nhân viên trong 3 ngày làm việc để chỉnh sửa giao diện và mẫu câu trả lời KHÔNG THÌ không được nâng bước rollout tiếp theo"
   interim_looks: "Chỉ kiểm tra chỉ số an toàn (mở lại 7 ngày, đối soát sổ cái ca 7/20, kiểm toán mẫu 100 đơn/tuần) và chỉ số chi phí/mức dùng hằng tuần; không kết luận chỉ số chính trước khi đủ m >= 299 yêu cầu/nhân viên ở bước 0,50"
-  rollback: "Giám đốc vận hành LogiX-VN (hoặc Kỹ sư trưởng agent được uỷ quyền) bấm feature flag tắt trợ lý trong vòng 30 phút; 100% yêu cầu khách hàng lập tức được phục vụ bằng quy trình nhân viên CSKH tự xử lý tiêu chuẩn"
-  decision_date: "2027-01-05"
+  rollback: "Giám đốc vận hành LogiX-VN bấm feature flag tắt trợ lý trong vòng 30 phút; 100% yêu cầu khách hàng lập tức được phục vụ bằng quy trình nhân viên CSKH tự xử lý tiêu chuẩn"
+  sample_cutoff_date: "2026-12-28" # Khoá thu thập mẫu sau 2 tuần bước 0.50 (đủ m >= 299 YC/người); dành 7 ngày (2026-12-29 đến 2027-01-04) theo dõi mở lại
+  decision_date: "2027-01-05"      # Họp hội đồng Gate 2b ra quyết định sau khi đủ 7 ngày theo dõi mở lại
   simulated_inputs:
     - "phut_xem_lai_simulated và phut_lam_lai_simulated từ logix_requests.csv (mọi con số chi phí sau đây là simulated và sẽ thay bằng phút đo thật qua event ngay sau tuần 1)"
     - "CPS toàn mẫu 4.472 đ (gấp 16,3 lần hoá đơn 274,7 đ) và chi phí cả hệ thống 5.865 đ/yêu cầu [simulated]"

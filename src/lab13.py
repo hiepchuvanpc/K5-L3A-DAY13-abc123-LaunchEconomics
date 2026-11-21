@@ -17,6 +17,7 @@ GIA_RA = 130        # đ / 1.000 token đầu ra
 GIA_TOOL = 15       # đ / lần gọi tool
 LUONG_PHUT = 2000   # đ / phút nhân viên (đã gồm bảo hiểm, văn phòng)
 BASELINE = 12000    # đ / yêu cầu khi nhân viên tự làm (6 phút = 12.000 đ)
+CHI_PHI_CO_DINH = 40_000_000  # đ / tháng
 
 
 # ==========================================
@@ -180,6 +181,28 @@ def main():
     print("\n  Tỉ lệ OK (%) theo lần thử (attempt):")
     print(pivot_ok.to_string())
 
+    # A4 · Chi phí cố định (noi_dia + hang_nang)
+    print("\n" + "-" * 80)
+    print("NHIỆM VỤ A4 · CHI PHÍ CỐ ĐỊNH (40 TRIỆU Đ/THÁNG) - PHẠM VI PILOT")
+    print("-" * 80)
+    reqs_pilot = reqs[reqs['loai'].isin(['noi_dia', 'hang_nang'])].copy()
+    runs_pilot = runs[runs['request_id'].isin(reqs_pilot['request_id'])].copy()
+    res_pilot = mo_hinh(runs_pilot, reqs_pilot)
+    cps_bien_doi = res_pilot['cps']
+    ti_le_tc_pilot = res_pilot['ti_le_tc']  # 900 / 982 ≈ 91.65%
+
+    for quy_mo, label in [(45_000, "45.000 YC/tháng"), (22_500, "Một nửa khối lượng (22.500 YC/tháng)")]:
+        viec_tc = round(quy_mo * ti_le_tc_pilot)
+        co_dinh_moi_viec = CHI_PHI_CO_DINH / viec_tc
+        cps_tong = cps_bien_doi + co_dinh_moi_viec
+        print(f"  {label:35s}: TC={viec_tc:>6,d}/tháng | Cố định/việc={co_dinh_moi_viec:>6,.0f} đ | "
+              f"Tổng CPS={cps_tong:>6,.0f} đ ({cps_tong / BASELINE:.2f}x so với 12.000 đ) [simulated]")
+
+    # Ngưỡng hoà vốn cố định
+    viec_hoa_von = math.ceil(CHI_PHI_CO_DINH / (BASELINE - cps_bien_doi))
+    yc_hoa_von = math.ceil(viec_hoa_von / ti_le_tc_pilot)
+    print(f"  --> Ngưỡng hoà vốn phần cố định: tối thiểu {viec_hoa_von:,d} việc thành công/tháng (~{yc_hoa_von:,d} YC/tháng)")
+
     # B1 & B2
     print("\n" + "-" * 80)
     print("NHIỆM VỤ B1 & B2 · BẢNG ĐỘ NHẠY (9 KỊCH BẢN)")
@@ -222,9 +245,6 @@ def main():
     print("\n" + "-" * 80)
     print("NHIỆM VỤ B4 · KỊCH BẢN XEM LẠI 100% (noi_dia + hang_nang)")
     print("-" * 80)
-    reqs_pilot = reqs[reqs['loai'].isin(['noi_dia', 'hang_nang'])].copy()
-    runs_pilot = runs[runs['request_id'].isin(reqs_pilot['request_id'])].copy()
-
     tien_may = ((runs_pilot['tokens_in'] / 1000 * GIA_VAO) +
                 (runs_pilot['tokens_out'] / 1000 * GIA_RA) +
                 (runs_pilot['tool_calls'] * GIA_TOOL)).sum()
@@ -233,16 +253,28 @@ def main():
     tien_xem_lai = len(ok_reqs) * 5 * LUONG_PHUT
 
     so_ca_lam_lai = (reqs_pilot['ket_qua'] == 'lam_lai').sum()
-    tien_lam_lai = so_ca_lam_lai * 9 * LUONG_PHUT
-
-    tong_b4 = tien_may + tien_xem_lai + tien_lam_lai
     thanh_cong_b4 = (reqs_pilot['ket_qua'] == 'thanh_cong').sum()
-    cps_b4 = tong_b4 / thanh_cong_b4
 
-    print(f"  Số yêu cầu: {len(reqs_pilot)} | Xem lại: {len(ok_reqs)} ca (5p) | Làm lại: {so_ca_lam_lai} ca (9p)")
-    print(f"  Tổng chi phí: {tong_b4:,.0f} đ | Thành công: {thanh_cong_b4}")
-    print(f"  CPS khi xem lại 100%: {cps_b4:,.0f} đ = {cps_b4 / BASELINE:.2f}x so với 12.000 đ [simulated]")
-    print("  --> KẾT LUẬN B4: Xem lại 100% thì hầu như KHÔNG TIẾT KIỆM (0,98x) vì tiền xem lại chiếm 90%!")
+    # Kịch bản 1: Giả định đề bài (9 phút/ca làm lại)
+    tien_lam_lai_9m = so_ca_lam_lai * 9 * LUONG_PHUT
+    tong_b4_9m = tien_may + tien_xem_lai + tien_lam_lai_9m
+    cps_b4_9m = tong_b4_9m / thanh_cong_b4
+
+    # Kịch bản 2: Thời gian làm lại trung bình thực tế từ dữ liệu (15.3 phút/ca)
+    phut_lam_lai_tt = reqs_pilot['phut_lam_lai_simulated'].sum()
+    tien_lam_lai_tt = phut_lam_lai_tt * LUONG_PHUT
+    tong_b4_tt = tien_may + tien_xem_lai + tien_lam_lai_tt
+    cps_b4_tt = tong_b4_tt / thanh_cong_b4
+    phut_tb = phut_lam_lai_tt / so_ca_lam_lai if so_ca_lam_lai > 0 else 0
+
+    print(f"  Số YC: {len(reqs_pilot)} | Xem lại: {len(ok_reqs)} ca (5p) | Làm lại: {so_ca_lam_lai} ca | TC: {thanh_cong_b4}")
+    print(f"  (1) Làm lại 9 phút/ca   : CPS = {cps_b4_9m:,.0f} đ = {cps_b4_9m / BASELINE:.2f}x so với 12.000 đ [simulated]")
+    print(f"  (2) Làm lại thực tế {phut_tb:.1f}p: CPS = {cps_b4_tt:,.0f} đ = {cps_b4_tt / BASELINE:.2f}x so với 12.000 đ [simulated] (ĐẮT HƠN NGƯỜI TỰ LÀM!)")
+    
+    # Ngưỡng hoà vốn thời gian xem lại
+    nguong_p_9m = (BASELINE * thanh_cong_b4 - tien_may - tien_lam_lai_9m) / (len(ok_reqs) * LUONG_PHUT)
+    nguong_p_tt = (BASELINE * thanh_cong_b4 - tien_may - tien_lam_lai_tt) / (len(ok_reqs) * LUONG_PHUT)
+    print(f"  --> Ngưỡng hoà vốn thời gian xem lại mỗi ca: <= {nguong_p_9m:.2f} phút (với 9p) hoặc <= {nguong_p_tt:.2f} phút (với 15.3p)")
 
     # D1
     print("\n" + "-" * 80)

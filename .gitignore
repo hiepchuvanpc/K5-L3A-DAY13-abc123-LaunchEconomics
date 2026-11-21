@@ -1,12 +1,22 @@
-.env
-.env.*
-!.env.example
+# Byte-compiled / optimized / virtualenv
 __pycache__/
 *.py[cod]
-.pytest_cache/
-.DS_Store
+*$py.class
 .venv/
 venv/
+
+# Editor
+.vscode/
+.idea/
+
+# macOS metadata & junk files
+.DS_Store
+.AppleDouble
+.LSOverride
+__MACOSX/
+._*
+
 # Bài làm mẫu (có đáp án) không đưa vào repo đề bài
 example.zip
 example/
+bai_nop/

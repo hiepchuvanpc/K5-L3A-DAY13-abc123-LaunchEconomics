@@ -11,10 +11,10 @@
 
 | STT | Họ tên | MSSV | Email | GitHub | Vai trò |
 | --: | ------ | ---- | ----- | ------ | ------- |
-|   1 | Chử Văn Hiệp | 2A202603382 | 26ai.hiepcv@vinuni.edu.vn | hiepchuvanpc | Người viết code (TV 1 · Tech Lead) |
-|   2 | Nguyễn Quang Vũ | 2A202603407 | nguyenquangvu755@gmail.com | NguyenVu8888 | Người kiểm số (TV 2 · QC & Analyst) |
-|   3 | Dương Tuấn Hưng | 2A202603416 | duongtuanhung2711@gmail.com | hunglun2711 | Người gắn nhãn 1 & Pilot (TV 3 · Pilot Lead) |
-|   4 | Nguyễn Ngọc Minh Đức | 2A202603421 | nguyenngocminhduc2005@gmail.com | MinDuck512 | Người gắn nhãn 2 & Giữ hồ sơ (TV 4 · Launch Lead) |
+|   1 | Chử Văn Hiệp | 2A202603382 | 26ai.hiepcv@vinuni.edu.vn | hiepchuvanpc | Người viết code |
+|   2 | Nguyễn Quang Vũ | 2A202603407 | nguyenquangvu755@gmail.com | NguyenVu8888 | Người kiểm số |
+|   3 | Dương Tuấn Hưng | 2A202603416 | duongtuanhung2711@gmail.com | hunglun2711 | Người gắn nhãn 1 & Pilot |
+|   4 | Nguyễn Ngọc Minh Đức | 2A202603421 | nguyenngocminhduc2005@gmail.com | MinDuck512 | Người gắn nhãn 2 & Giữ hồ sơ |
 
 Bốn vai của lab:
 

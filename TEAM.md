@@ -12,7 +12,7 @@
 | STT | Họ tên | MSSV | Email | GitHub | Vai trò |
 | --: | ------ | ---- | ----- | ------ | ------- |
 |   1 |        |      |       |        |         |
-|   2 |        |      |       |        |         |
+|   2 | Nguyễn Quang Vũ | 2A202603407 | nguyenquangvu755@gmail.com | NguyenVu8888 | Người kiểm số (TV 2) |
 |   3 |        |      |       |        |         |
 |   4 |        |      |       |        |         |
 

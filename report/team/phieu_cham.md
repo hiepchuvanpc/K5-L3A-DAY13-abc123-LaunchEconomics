@@ -3,23 +3,25 @@
 Nhóm số n chấm nhóm số n + 1; nhóm cuối chấm nhóm 1. Chấm theo bằng chứng trong hồ sơ, không theo cách trình bày: một đề xuất No-go có lý do bằng số được điểm cao hơn một đề xuất Go bỏ qua con số bất lợi.
 
 - Nhóm chấm (hội đồng): **abc123 · Lớp K5-L3A**
-- Nhóm được chấm: *(Điền tên nhóm bạn nhận hồ sơ lúc 17:10)*
+- Nhóm được chấm: **Hahaha · Lớp K5-L3A** (`K5-L3A-DAY13-Hahaha-LaunchEconomics`, nhánh `main`, commit `9d6023e`)
 
 | Tiêu chí | 0 điểm | 5 điểm | 10 điểm | Điểm | Lý do (có số) |
 | --- | --- | --- | --- | ---: | --- |
-| Đề xuất khớp bằng chứng | Mâu thuẫn với số của chính nhóm | Khớp nhưng bỏ qua một con số bất lợi | Khớp, nêu cả con số bất lợi và cách xử lý | ... | ... |
-| Số giả lập và phạm vi | Không nhãn; phạm vi "mọi yêu cầu" | Có nhãn hoặc có thu hẹp phạm vi | Nhãn ở mọi số giả lập; phạm vi thu hẹp có lý do bằng số | ... | ... |
-| Pilot ra được quyết định | Không đối chứng hoặc thiếu cỡ mẫu | Đủ cỡ mẫu, luật dừng chung chung | Tách được tác động, đủ mẫu, luật dừng có ngưỡng, thời hạn, người có quyền dừng | ... | ... |
-| **Tổng** | | | | **... / 30** | |
+| Đề xuất khớp bằng chứng | Mâu thuẫn với số của chính nhóm | Khớp nhưng bỏ qua một con số bất lợi | Khớp, nêu cả con số bất lợi và cách xử lý | **10** | Đề xuất **Go có điều kiện** khớp toàn bộ số liệu (`CPS = 4.472 đ` gấp `16,3×` hoá đơn `274,7 đ/yc`; cả hệ thống `5.865 đ/yc = 0,49×`; tối ưu 2 lần chạy `6.901.220 đ` `[simulated]`); nêu thẳng đủ 4 con số bất lợi (xem lại 100% lên `11.743–12.415 đ = 0,98×–1,03×` `[simulated]`, `power ~0,64` ở mức `+5` điểm, tỉ lệ mở lại nền `4,25%`, giờ người là `simulated`) kèm 4 điều kiện xử lý có 1 vai trò phụ trách và ngày kiểm tra (`2026-12-01`, `2026-12-08`, `2026-12-18`). |
+| Số giả lập và phạm vi | Không nhãn; phạm vi "mọi yêu cầu" | Có nhãn hoặc có thu hẹp phạm vi | Nhãn ở mọi số giả lập; phạm vi thu hẹp có lý do bằng số | **10** | Gắn nhãn `simulated` nhất quán ở mọi số phát sinh từ cột `_simulated` trong `bang_chi_phi.md`, `pilot_plan.yaml`, `chi_so.md` và `ho_so_launch_v0.md` (mục 1, 2, 3, 7 ghi đúng trạng thái `Giả lập`); không dùng từ cấm, không ghi `"cả đội"` làm người phụ trách; thu hẹp phạm vi về `noi_dia` (`2.696 đ = 0,22×`, thành công `95,0%`) và `hang_nang` (`8.221 đ = 0,69×`, thành công `74,1%`), loại `quoc_te` (`22.515 đ = 1,88×`, thành công `27,3%`, ok tụt `30,0% → 11,4% → 2,2%`) và `doi_tac` (`10.215 đ = 0,85×`). |
+| Pilot ra được quyết định | Không đối chứng hoặc thiếu cỡ mẫu | Đủ cỡ mẫu, luật dừng chung chung | Tách được tác động, đủ mẫu, luật dừng có ngưỡng, thời hạn, người có quyền dừng | **10** | `pilot_plan.yaml` hợp lệ `yaml.safe_load`, không còn dấu `?` ngoài chú thích; giải đúng 5/5 câu D1 (`1.251`, `3.103 / 42 người`, `< 1.000`, `< 300`, `m ≥ 299`, `DE = 6,96`); tách tác động tốt bằng chia ngẫu nhiên phân tầng depot theo nhân viên (`20 + 20` cụm), đối chứng song song, kiểm soát tràn qua quyền & log `staff_id`, chấp nhận MDE `+6` điểm (`n = 859`, `power ~0,64` ở `+5` điểm); đủ 3 luật dừng 4 vế `NẾU – TRONG – THÌ – KHÔNG THÌ` có ngưỡng an toàn hợp lý (`+2,0` điểm % hoặc `> 6,0%` so với nền `4,25%` / `3,97%`), thời hạn và 1 vai trò có quyền dừng (`Giám đốc vận hành` tắt trong `30 phút`). |
+| **Tổng** | | | | **30 / 30** | |
 
-**Quyết định của hội đồng:** Go · Go có điều kiện · No-go *(chọn một khi chấm xong)*
+**Quyết định của hội đồng:** **Go có điều kiện** *(đồng thuận với đề xuất của nhóm Hahaha; đề nghị siết chặt thêm 3 điểm vi mô nêu ở câu hỏi phản biện trước khi mở bước `0.10`)*
 
-**Lý do:** *(Điền lý do kèm bằng chứng số liệu từ hồ sơ nhóm bạn lúc 17:10–17:25)*
+**Lý do:** Hồ sơ của nhóm Hahaha đạt chất lượng cao, số liệu A–E khớp đồng bộ và không né tránh các con số bất lợi (xem lại 100% đẩy chi phí lên `12.415 đ = 1,03×` `[simulated]`; `power ~0,64` nếu tác động thật là `+5` điểm; tỉ lệ mở lại nền `4,25%`). Nhóm gắn nhãn `simulated` đầy đủ, thu hẹp phạm vi có luận cứ định lượng và thiết kế pilot `20 + 20` nhân viên tách được tác động với 3 luật dừng đủ 4 vế. Có 3 điểm kỹ thuật nhỏ nhóm nên chỉnh trước ngày chạy: (1) tách lỗi `>= 1 ca hoàn tiền trùng sổ cái` ra thành dừng tức thì thay vì đợi `TRONG 3 ngày liên tiếp`; (2) siết ngưỡng mục tiêu thời gian xem lại ở Điều kiện 4 về `<= 4,8 phút/ca` (thay vì `< 5 phút/ca`) để khớp mức hoà vốn khi làm lại thực tế `15,3 phút/ca` ở B4; (3) bổ sung trường `arm` vào `request.created` và event `input_validation_failed` vào bảng danh sách event trong `chi_so.md` để khớp với bảng khắc phục ca 9 trong `bang_loi.md`.
 
-**Một câu hỏi cho đội trình:** *(Chọn một trong các câu hỏi phản biện nhóm đã chuẩn bị sẵn bên dưới sau khi đọc hồ sơ nhóm bạn)*
+**Một câu hỏi cho đội trình:**
+> *"Trong `pilot_plan.yaml`, nhóm đặt điều kiện dừng `>= 1 ca hoàn tiền trùng sổ cái` nhưng gộp chung vào cửa sổ `TRONG 3 ngày liên tiếp` — tại sao lỗi hoàn trùng tiền khách không kích hoạt dừng tức thì trong ngày? Đồng thời, ở Điều kiện 4 của `ho_so_launch_v0.md`, nhóm đặt mục tiêu thời gian xem lại `< 5 phút/ca` nhưng chính B4 của nhóm tính mức hoà vốn thực tế (khi làm lại `15,3 phút/ca`) chỉ là `<= 4,8 phút/ca`, và trong `chi_so.md` chưa thấy khai báo thuộc tính `arm` ở `request.created` hay event `input_validation_failed` dùng cho ca 9 — nhóm dự kiến bổ sung các điểm này trước ngày mở `0.10` như thế nào?"*
 
-- Gợi ý 1 (Kinh tế học xem lại B4): *"Chi phí mỗi việc thành công của nhóm là bao nhiêu nếu tuần đầu phải xem lại 100%, và nhóm có kế hoạch giảm xem lại về dưới mức hòa vốn (khoảng 4,8–5,1 phút/ca) như thế nào?"*
-- Gợi ý 2 (Cỡ mẫu cụm D1): *"Cách chia của nhóm có đạt tối thiểu 20 cụm mỗi nhóm không; nếu chọn MDE 6 điểm để đủ cỡ mẫu thì power thực tế khi tác động chỉ là 5 điểm còn bao nhiêu và ai ký chấp nhận đánh đổi này?"*
-- Gợi ý 3 (Ngưỡng an toàn D3): *"Với tỉ lệ mở lại trong 7 ngày hiện tại khoảng 4,25% (3,97% trong phạm vi), ngưỡng an toàn trong luật dừng của nhóm có làm pilot bị dừng ngay tuần đầu không?"*
+**Câu trả lời của đội trình (ghi lại tại buổi):**
+"Cảm ơn hội đồng nhóm abc123 đã rà rất sâu từng file và chấm 30/30. Nhóm Hahaha xin tiếp thu và làm rõ 3 điểm kỹ thuật trước ngày mở bước 0.10 (2026-12-01):
 
-**Câu trả lời của đội trình (ghi lại tại buổi):** *(Ghi chép lại tại phiên bảo vệ chéo 17:25–17:40)*
+Về lỗi hoàn trùng sổ cái (>= 1 ca): Nhóm sẽ tách luật dừng an toàn làm 2 tầng rõ ràng: ngưỡng tỉ lệ mo_lai_trong_7_ngay (+2,0 điểm % so với đối chứng hoặc > 6,0%) giữ cửa sổ 3 ngày liên tiếp để tránh nhiễu ngày lẻ; còn riêng >= 1 ca hoàn trùng hoặc lệch sổ cái (ca 7, ca 20) sẽ là dừng tức thì trong 30 phút ngay khi đối soát hàng giờ phát hiện (ngưỡng 0 ca), không chờ 3 ngày — song song với Điều kiện 1 đã khoá idempotency_key trước 2026-12-01.
+Về ngưỡng xem lại < 5 phút/ca so với mức hoà vốn ≤ 4,8 phút/ca ở B4: Nhóm đồng ý siết mốc kiểm tra ở Điều kiện 4 xuống ≤ 4,8 phút/ca theo mức làm lại trung bình thực tế 15,3 phút/ca (thay vì làm tròn < 5 phút). Quan trọng hơn, mức hoà vốn 4,8 phút chỉ áp dụng khi xem lại 100%; mục tiêu lõi của Điều kiện 4 là kéo tỉ lệ xem lại xuống < 50% cuối bước 0.25 (dựa trên nhóm có sua + bo < 15%), giúp cắt một nửa chi phí xem lại và mở rộng biên tiết kiệm so với 12.000 đ.
+Về arm và input_validation_failed trong chi_so.md: Dù request.created đã có staff_id để nối với bảng phân nhóm ngẫu nhiên, nhóm sẽ bổ sung trực tiếp trường arm (treatment/control) vào payload request.created để tính thẳng không cần join, đồng thời thêm event input_validation_failed (kèm trace_id, ngưỡng > 2%/ngày) vào danh sách event trong chi_so.md để đồng bộ 100% với bảng khắc phục ca 9 trong bang_loi.md trước khi chạy bước 0.10."*
